@@ -22,8 +22,8 @@
   "Or in let expressions"
   (= "Rich Hickey aka The Clojurer aka Go Time aka Lambda Guru"
      (let [[first-name last-name & aliases]
-           (list "Rich" "Hickey" "The Clojurer" "Go Time" "Lambda Guru")]
-       (str first-name " aka " last-name (doall (map (fn [x] (str " aka " x)) (str aliases " ") )) ))
+           (list "Rich " "Hickey" "The Clojurer" "Go Time" "Lambda Guru")]
+       (str first-name last-name " " (clojure.string/replace (mapv (fn [x] (str "aka " x)) aliases)  #"[\"\[\]]" "")  )  )
   )
 
   "You can regain the full argument if you like arguing"
